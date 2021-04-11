@@ -32,3 +32,19 @@ export default {
 //     migrationsDir: "./src/database/migrations",
 //   },
 // };
+
+module.exports = {
+  type: "postgres",
+  host: process.env.DB_HOST,
+  port: 5432,
+  username: "xgeqhdhm",
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
+  migrations: ["./src/database/migrations/**.ts"],
+  entities: ["./src/models/**.ts"],
+  logging: true,
+  cli: {
+    entitiesDir: "src/models",
+    migrationsDir: "./src/database/migrations",
+  },
+};

@@ -1,5 +1,3 @@
-import { ConnectionOptions } from "typeorm";
-
 export default {
   type: "postgres",
   url: process.env.DATABASE_URL,
@@ -15,7 +13,7 @@ export default {
     entitiesDir: "src/models",
     migrationsDir: "./src/database/migrations",
   },
-} as ConnectionOptions;
+};
 
 // module.exports = {
 //   type: "postgres",

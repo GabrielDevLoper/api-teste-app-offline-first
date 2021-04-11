@@ -1,6 +1,6 @@
 
 
-export default {
+module.exports = {
   type: "postgres",
   host: "queenie.db.elephantsql.com",
   port: 5432,

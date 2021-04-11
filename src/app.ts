@@ -5,6 +5,7 @@ import "express-async-errors";
 import { routes } from "./routes";
 import createConnection from "./database";
 import { AppError } from "./errors/AppError";
+import cors from 'cors'
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ createConnection();
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 app.use(routes);
 
 app.use((err: Error, req: Request, res: Response, _next: NextFunction) => {

@@ -27,7 +27,7 @@ class FuncionarioController {
         try {
             await schema.validate(req.body);
         } catch (error) {
-            throw new AppError(error, 200);
+            throw new AppError(error, 400);
         }
 
         const funcionarioRepository = getCustomRepository(FuncionarioRepository);
@@ -38,20 +38,21 @@ class FuncionarioController {
         const existsSetor = await setorRepository.findOne({id: id_setor});
 
         if(!existsSetor){
-            throw new AppError("Setor não existe", 200)
+            throw new AppError("Setor não existe", 404)
         }
 
         if(existsFuncionario){
-            throw new AppError("Funcionario já está cadastrado", 200)
+            throw new AppError("Funcionario já está cadastrado", 400)
         }
 
         const date = data_nascimento.split("/");
         const dateFormat = `${date[2]}-${date[1]}-${date[0]}`
 
         if(new Date(dateFormat).toDateString() == "Invalid Date"){
-            throw new AppError("Data inserida inválida", 200)
+            throw new AppError("Data inserida", 400)
         }
        
+
         const funcionario = funcionarioRepository.create({
             nome,
             cpf,

@@ -49,7 +49,7 @@ class FuncionarioController {
         const dateFormat = `${date[2]}-${date[1]}-${date[0]}`
 
         if(new Date(dateFormat).toDateString() == "Invalid Date"){
-            throw new AppError("Data inserida", 400)
+            throw new AppError("Data inserida é inválida", 400)
         }
        
 

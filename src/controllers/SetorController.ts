@@ -3,6 +3,10 @@ import { getCustomRepository } from "typeorm";
 import { AppError } from "../errors/AppError";
 import { SetorRepository } from "../repositories/SetorRepository";
 
+interface BodyProps {
+    nome: string;
+}
+
 class SetorController {
 
     async index(req: Request, res: Response){
@@ -14,18 +18,19 @@ class SetorController {
     }
 
     async store(req: Request, res: Response){
-        const { nome } = req.body;
+        const { nome } = req.body as BodyProps;
 
         const setorRepository = getCustomRepository(SetorRepository);
+    
 
-        const existsSetor = await setorRepository.findOne({nome});
+        const existsSetor = await setorRepository.findOne({nome:  nome.toLowerCase()});
 
         if(existsSetor){
-            throw new AppError("Product already exists", 400)
+            throw new AppError("Setor ja existe", 400)
         }
 
         const setor = setorRepository.create({
-            nome,
+            nome: nome.toLowerCase(),
             
         });
 

@@ -35,7 +35,7 @@ class FuncionarioController {
 
         const existsFuncionario = await funcionarioRepository.findOne({cpf});
 
-        const existsSetor = await setorRepository.findOne({id: id_setor});
+        const existsSetor = await setorRepository.findOne({nome: id_setor});
 
         if(!existsSetor){
             throw new AppError("Setor não existe", 404)

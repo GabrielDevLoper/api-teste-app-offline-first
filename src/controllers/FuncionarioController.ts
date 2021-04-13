@@ -63,6 +63,8 @@ class FuncionarioController {
 
         await funcionarioRepository.save(funcionario);
 
+        delete funcionario.id_setor
+
         return res.json(funcionario);
     }
 

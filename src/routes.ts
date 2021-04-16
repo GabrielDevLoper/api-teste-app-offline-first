@@ -1,4 +1,6 @@
 import { Router } from "express";
+import multer from "multer";
+import multerConfig from "./config/multer";
 
 //Import controllers for aplication
 import PermissionController from "./controllers/PermissionController";
@@ -12,7 +14,8 @@ import { is } from "./middlewares/permission";
 const routes = Router();
 
 // Usuários
-routes.post("/users", UserController.store);
+routes.post("/usuarios", UserController.store);
+routes.get("/usuarios", UserController.index);
 
 // Auth
 routes.post("/sessions", SessionController.auth);
@@ -31,5 +34,6 @@ routes.get("/permissions", PermissionController.index);
 
 // Roles
 routes.post("/roles", RoleController.store);
+routes.get("/roles", RoleController.index);
 
 export { routes };

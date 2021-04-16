@@ -3,6 +3,7 @@ import UserService from "../services/UserService";
 
 class UserController {
     async index(req: Request, res: Response) {
+        await UserService.index(req, res);
 
     }
 

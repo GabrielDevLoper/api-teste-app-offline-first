@@ -1,4 +1,4 @@
-import {BeforeInsert, Column, Entity, JoinTable, ManyToMany, PrimaryColumn} from "typeorm";
+import {BeforeInsert, AfterRemove ,Column, Entity, JoinTable, ManyToMany, PrimaryColumn} from "typeorm";
 import { v4 as uuid } from "uuid";
 import { Permission } from "./Permission";
 
@@ -26,4 +26,6 @@ export class Role {
     async generatedUuid(){
         this.id = uuid();
     }
+
+    
 }

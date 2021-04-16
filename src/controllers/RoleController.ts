@@ -5,6 +5,12 @@ import { PermissionRepository } from "../repositories/PermissionRepository";
 import { RoleRepository } from "../repositories/RoleRepository";
 
 class RoleController {
+    async index(req: Request, res: Response) {
+        const roleRepository = getCustomRepository(RoleRepository);
+        const roles = await roleRepository.find();
+
+        return res.json(roles)
+    }
     async store(req: Request, res: Response){
         const { name, description, permissions } = req.body;
 

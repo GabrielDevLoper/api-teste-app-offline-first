@@ -21,6 +21,7 @@ class UserService {
 
   async store(req: Request, res: Response) {
     const { name, email, password, roles } = req.body;
+    // @ts-ignore: Unreachable code error
     const { name: nome, data: buffer, mimetype } = req.files.file;
     const s3 = new aws.S3();
     const key = `${uuid()}-${nome}`;
@@ -67,6 +68,7 @@ class UserService {
         return res.status(201).json(user);
       });
     } else {
+      // @ts-ignore: Unreachable code error
       let img = req.files.file;
       const urlLocal = path.join(__dirname, "..", "..", "tmp", "uploads", key);
 
